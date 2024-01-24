@@ -10,8 +10,6 @@ export default authMiddleware({
     if (auth.userId && auth.isPublicRoute) {
       let path = "/select-org";
 
-      console.log("auth orgId: ", auth.orgId);
-
       if (auth.orgId) {
         path = `/organization/${auth.orgId}`;
       }
