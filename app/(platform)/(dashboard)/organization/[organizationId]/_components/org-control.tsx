@@ -8,13 +8,15 @@ export const OrgControl = () => {
   const params = useParams();
   const { setActive } = useOrganizationList();
 
+  console.log("params.organizationId: ", params.organizationId);
+
   useEffect(() => {
     if (!setActive) {
       return;
     }
 
     setActive({
-      organization: params.organizationId as string,
+      organization: params.organizationId as string, // make sure we get right params like folder dynamic route like this [organizationId]
     });
   }, [setActive, params.organizationId]);
 
