@@ -24,6 +24,9 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
   const { organization: activeOrganization, isLoaded: isLoadedOrg } =
     useOrganization();
 
+  // console.log("activeOrganization: ", activeOrganization);
+  // console.log("load: ", isLoadedOrg);
+
   const { userMemberships, isLoaded: isLoadedOrgList } = useOrganizationList({
     userMemberships: {
       infinite: true,
@@ -41,12 +44,16 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
     // {'test': true} => [test]
   );
 
+  // console.log("default accordion: ", defaultAccordionValue);
+
   const onExpand = (id: string) => {
     setExpanded((curr) => ({
       ...curr,
       [id]: !expanded[id],
     }));
   };
+
+  // console.log("onExpand: ", expanded);
 
   if (!isLoadedOrg || !isLoadedOrgList || userMemberships.isLoading) {
     return (

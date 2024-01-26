@@ -36,6 +36,8 @@ export const NavItem: React.FC<NavItemProps> = ({
   const router = useRouter();
   const pathName = usePathname();
 
+  console.log("Organization: ", organization);
+
   const routes = [
     {
       label: "Boards",
