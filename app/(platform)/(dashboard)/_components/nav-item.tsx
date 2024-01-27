@@ -37,7 +37,7 @@ export const NavItem = ({
   const router = useRouter();
   const pathName = usePathname();
 
-  console.log("Organization: ", organization);
+  // console.log("Organization: ", organization);
 
   const routes = [
     {

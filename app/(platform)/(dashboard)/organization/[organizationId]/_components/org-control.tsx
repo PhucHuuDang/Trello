@@ -8,7 +8,7 @@ export const OrgControl = () => {
   const params = useParams();
   const { setActive } = useOrganizationList();
 
-  console.log("params.organizationId: ", params.organizationId);
+  // console.log("params.organizationId: ", params.organizationId);
 
   useEffect(() => {
     if (!setActive) {

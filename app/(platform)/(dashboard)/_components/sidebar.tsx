@@ -70,7 +70,7 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
       </>
     );
   }
-  console.log("userMemberships: ", userMemberships);
+  // console.log("userMemberships: ", userMemberships);
 
   return (
     <>
@@ -94,6 +94,7 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
         defaultValue={defaultAccordionValue}
         className="space-y-2"
       >
+        {/* to get destructure exact fields we want */}
         {userMemberships.data.map(({ organization }) => (
           <NavItem
             key={organization.id}
