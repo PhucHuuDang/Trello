@@ -1,17 +1,28 @@
 "use client";
 
-import { create } from "@/actions/create-board";
-import { useFormState } from "react-dom";
+import { createBoard } from "@/actions/create-board";
+
 import { SubmitButton } from "./form-button";
+import { useAction } from "@/hooks/use-action";
 
 export const Form = () => {
-  const initialState = { message: null, errors: {} };
-  const [state, dispatch] = useFormState(create, initialState);
+  const { execute, fieldErrors } = useAction(createBoard, {
+    onSuccess(data) {
+      console.log(data, "Success");
+    },
+    onError(error) {
+      console.error(error);
+    },
+  });
+  // console.log(fieldErrors);
 
-  console.log(state);
-  // console.log(dispatch);
+  const onSubmit = (formData: FormData) => {
+    const title = formData.get("title") as string;
+    execute({ title });
+  };
+
   return (
-    <form action={dispatch}>
+    <form action={onSubmit}>
       <div className="flex flex-col space-y-2">
         <input
           id="title"
@@ -20,9 +31,9 @@ export const Form = () => {
           placeholder="enter board title"
           className="border-black border p-1 "
         />
-        {state?.errors?.title ? (
+        {fieldErrors?.title ? (
           <div>
-            {state.errors.title.map((error: string) => (
+            {fieldErrors?.title.map((error: string) => (
               <p className="text-rose-500" key={error}>
                 {error}
               </p>

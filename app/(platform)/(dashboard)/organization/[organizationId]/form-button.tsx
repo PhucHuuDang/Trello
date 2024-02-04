@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useFormStatus } from "react-dom";
 
 export const SubmitButton = () => {
+  // to get status when clicking
   const { pending } = useFormStatus();
 
   return (
