@@ -2,8 +2,9 @@
 
 import { createBoard } from "@/actions/create-board";
 
-import { SubmitButton } from "./form-button";
 import { useAction } from "@/hooks/use-action";
+import { FormInput } from "@/components/form/form-input";
+import { FormSubmit } from "@/components/form/form-submit";
 
 export const Form = () => {
   const { execute, fieldErrors } = useAction(createBoard, {
@@ -18,30 +19,19 @@ export const Form = () => {
 
   const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
+    console.log({ title });
     execute({ title });
   };
+
+  // console.log(fieldErrors);
 
   return (
     <form action={onSubmit}>
       <div className="flex flex-col space-y-2">
-        <input
-          id="title"
-          name="title"
-          required
-          placeholder="enter board title"
-          className="border-black border p-1 "
-        />
-        {fieldErrors?.title ? (
-          <div>
-            {fieldErrors?.title.map((error: string) => (
-              <p className="text-rose-500" key={error}>
-                {error}
-              </p>
-            ))}
-          </div>
-        ) : null}
+        {/* we have to passed the same id ==> toLowerCased */}
+        <FormInput label="Board title" id="title" errors={fieldErrors} />
       </div>
-      <SubmitButton />
+      <FormSubmit>Save</FormSubmit>
     </form>
   );
 };
