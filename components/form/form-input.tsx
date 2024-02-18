@@ -15,7 +15,7 @@ interface FormInputProps {
   placeholder?: string;
   required?: boolean;
   disabled?: boolean;
-  errors: Record<string, string[]> | undefined;
+  errors?: Record<string, string[]> | undefined;
   className?: string;
   defaultValue?: string;
   onBlur?: () => void;
