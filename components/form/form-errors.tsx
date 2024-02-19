@@ -34,7 +34,6 @@ export const FormErrors = ({ id, errors }: FormErrorsProps) => {
             "
           >
             <XCircle className="h-4 w-4 mr-2" />
-            {/* <>{console.log("error: ", error)}</> */}
             {error}
           </div>
         );
