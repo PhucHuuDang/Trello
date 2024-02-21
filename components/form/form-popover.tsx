@@ -1,6 +1,7 @@
 "use client";
 
 import { X } from "lucide-react";
+import { useRouter } from "next/navigation";
 import {
   Popover,
   PopoverContent,
@@ -13,8 +14,10 @@ import { useAction } from "@/hooks/use-action";
 import { createBoard } from "@/actions/create-board";
 
 import { FormInput } from "./form-input";
-import { FormSubmit } from "./form-submit";
+import { ElementRef, useRef } from "react";
 import { toast } from "sonner";
+
+import { FormSubmit } from "./form-submit";
 import { FormPicker } from "./form-picker";
 
 interface FormPopoverProps {
@@ -28,23 +31,31 @@ export const FormPopover = ({
   children,
   side = "bottom",
   align,
-  sideOffset,
+  sideOffset = 0,
 }: FormPopoverProps) => {
+  const router = useRouter();
+  const closesRef = useRef<ElementRef<"button">>(null);
+
+  // console.log({ closesRef });
+
   const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: (data) => {
-      console.log({ data });
       toast.success("Board created!");
+      closesRef?.current?.click();
+      router.push(`/board/${data.id}`);
     },
     onError: (error) => {
-      console.log({ error });
       toast.error(error);
     },
   });
 
   const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
+    const image = formData.get("image") as string;
 
-    execute({ title });
+    execute({ title, image });
+
+    // console.log({ image });
   };
 
   return (
@@ -60,7 +71,7 @@ export const FormPopover = ({
           Create Board
         </div>
 
-        <PopoverClose asChild>
+        <PopoverClose ref={closesRef} asChild>
           <Button
             className="
                 h-auto
@@ -86,7 +97,7 @@ export const FormPopover = ({
               errors={fieldErrors}
             />
           </div>
-          <FormSubmit className="max-w-full">Create</FormSubmit>
+          <FormSubmit className="w-full">Create</FormSubmit>
         </form>
       </PopoverContent>
     </Popover>

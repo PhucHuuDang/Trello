@@ -10,6 +10,7 @@ import { Check, Loader2 } from "lucide-react";
 import { useFormStatus } from "react-dom";
 
 import { defaultImages } from "@/constants/images";
+import { FormErrors } from "./form-errors";
 
 interface FormPickerProps {
   id: string;
@@ -74,6 +75,15 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
               setSelectedImageId(image.id);
             }}
           >
+            <input
+              type="radio"
+              id={id}
+              name={id}
+              className="hidden"
+              checked={selectedImageId === image.id}
+              disabled={pending}
+              value={`${image.id}|${image.urls.thumb}|${image.urls.full}|${image.links.html}|${image.user.name}`}
+            />
             <Image
               fill
               alt="Unsplash image"
@@ -107,6 +117,8 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
             </Link>
           </div>
         ))}
+
+        <FormErrors id="image" errors={errors} />
       </div>
     </div>
   );
