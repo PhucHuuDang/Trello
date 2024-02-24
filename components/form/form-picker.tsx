@@ -57,8 +57,8 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
     );
   }
 
-  console.log(images);
-  console.log(selectedImageId);
+  // console.log(images);
+  // console.log(selectedImageId);
 
   return (
     <div className="relative">

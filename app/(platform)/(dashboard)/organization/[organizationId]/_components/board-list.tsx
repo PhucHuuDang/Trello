@@ -53,6 +53,7 @@ export const BoardList = async () => {
             "
             style={{ backgroundImage: `url(${board.imageThumbUrl})` }}
           >
+            {/* make the background of the image darken a little bit */}
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition" />
             <p className="relative font-semibold text-white">{board.title}</p>
           </Link>
