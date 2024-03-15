@@ -35,6 +35,7 @@ export const ListItem = ({ data, index }: ListContainerProps) => {
     <Draggable draggableId={data.id} index={index}>
       {(provided) => {
         // console.log(provided);
+
         return (
           <li
             {...provided.draggableProps}

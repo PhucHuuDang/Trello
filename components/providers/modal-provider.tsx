@@ -1,0 +1,22 @@
+"use client";
+
+import { CardModal } from "@/components/modal/card-modal";
+import { useEffect, useState } from "react";
+
+export const ModalProvider = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(function preventHydration() {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
+  return (
+    <>
+      <CardModal />
+    </>
+  );
+};

@@ -47,6 +47,9 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
 
   const onDragEnd = (result: any) => {
     const { destination, source, type } = result;
+
+    // the source is the list or card was dragged or dropped
+    // the destination is the list or card get that
     console.log(result);
 
     if (!destination) {
@@ -128,6 +131,7 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
       } else {
         // remove card from the source list
         const [movedCard] = sourceList.cards.splice(source.index, 1);
+        // console.log(sourceList.cards.splice(source.index, 1));
 
         console.log(movedCard);
         // Assign the new listed to the moved card
