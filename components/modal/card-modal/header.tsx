@@ -46,7 +46,6 @@ export const Header = ({ data }: HeaderProps) => {
   const [title, setTitle] = useState(data.title);
 
   const onSubmit = (formData: FormData) => {
-    console.log(formData.get("title"));
     const title = formData.get("title") as string;
 
     const boardId = params.boardId as string;
