@@ -9,7 +9,6 @@ import { Layout } from "lucide-react";
 
 import { useParams } from "next/navigation";
 import { useAction } from "@/hooks/use-action";
-import { updateBoard } from "@/actions/update-board";
 
 import { FormInput } from "@/components/form/form-input";
 import { CardWithList } from "@/types";
