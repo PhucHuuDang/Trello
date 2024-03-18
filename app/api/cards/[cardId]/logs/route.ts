@@ -1,40 +1,36 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
+
+import { ENTITY_TYPE } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function GET(
-  req: Request,
+  request: Request,
   { params }: { params: { cardId: string } }
 ) {
   try {
     const { userId, orgId } = auth();
 
-    // console.log(params.cardId);
-
     if (!userId || !orgId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const card = await db.card.findUnique({
+    const auditLogs = await db.auditLog.findMany({
       where: {
-        id: params.cardId,
-        list: {
-          board: {
-            orgId,
-          },
-        },
+        orgId,
+        entityId: params.cardId,
+        entityType: ENTITY_TYPE.CARD,
       },
-      include: {
-        list: {
-          select: {
-            title: true,
-          },
-        },
+      orderBy: {
+        createdAt: "desc",
       },
+      take: 3,
     });
 
-    return NextResponse.json(card);
+    // console.log(auditLogs);
+
+    return NextResponse.json(auditLogs);
   } catch (error) {
-    return new NextResponse("Internal Error", { status: 500 });
+    return new NextResponse("Internal error", { status: 500 });
   }
 }

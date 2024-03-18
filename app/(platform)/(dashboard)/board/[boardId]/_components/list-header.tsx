@@ -93,6 +93,7 @@ export const ListHeader = ({ data, onAddCard }: ListHeaderProps) => {
             id="title"
             placeholder="Enter list title..."
             defaultValue={title}
+            errors={fieldErrors}
             className="
                 text-sm
                 px-[7px]

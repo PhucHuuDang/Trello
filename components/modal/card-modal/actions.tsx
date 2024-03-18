@@ -1,5 +1,7 @@
 "use client";
 
+import { toast } from "sonner";
+
 import { Skeleton } from "@/components/ui/skeleton";
 import { Copy, Trash } from "lucide-react";
 
@@ -11,7 +13,6 @@ import { CardWithList } from "@/types";
 import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
 import { useCardModal } from "@/hooks/use-card-modal";
-import { toast } from "sonner";
 
 interface ActionsProps {
   data: CardWithList;
