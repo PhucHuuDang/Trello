@@ -22,7 +22,7 @@ interface DescriptionProps {
 }
 
 export const Description = ({ data }: DescriptionProps) => {
-  console.log(data.description);
+  // console.log(data.description);
 
   const queryClient = useQueryClient();
   const params = useParams();
@@ -62,7 +62,7 @@ export const Description = ({ data }: DescriptionProps) => {
       queryClient.invalidateQueries({
         queryKey: ["card-logs", data.id],
       });
-      
+
       toast.success(`Card "${data.title}" updated`);
       disableEditing();
     },

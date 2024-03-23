@@ -17,7 +17,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
   const user = await currentUser();
 
-  console.log(user);
+  // console.log(user);
 
   if (!userId || !orgId || !user) {
     return {
@@ -43,7 +43,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
       url = stripeSession.url;
 
-      console.log(url);
+      // console.log(url);
     } else {
       const stripeSession = await stripe.checkout.sessions.create({
         success_url: settingUrl,
@@ -75,7 +75,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
       url = stripeSession.url || "";
 
-      console.log(url);
+      // console.log(url);
     }
   } catch {
     return {

@@ -50,7 +50,7 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
 
     // the source is the list or card was dragged or dropped
     // the destination is the list or card get that
-    console.log(result);
+    // console.log(result);
 
     if (!destination) {
       return;
@@ -83,13 +83,13 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
         (list) => list.id === source.droppableId
       );
 
-      console.log(sourceList);
+      // console.log(sourceList);
 
       const destList = newOrderData.find(
         (list) => list.id === destination.droppableId
       );
 
-      console.log(destList);
+      // console.log(destList);
 
       if (!sourceList || !destList) {
         return;
