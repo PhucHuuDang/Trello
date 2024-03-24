@@ -2,7 +2,7 @@ import Logo from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export const Navbar = () => {
+export const NavbarMarketing = () => {
   return (
     <div
       className="
