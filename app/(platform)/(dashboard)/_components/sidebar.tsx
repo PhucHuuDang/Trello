@@ -6,10 +6,8 @@ import { Plus } from "lucide-react";
 import { useLocalStorage } from "usehooks-ts";
 
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Accordion } from "@/components/ui/accordion";
-import { useState } from "react";
 import { NavItem, Organization } from "./nav-item";
 
 interface SidebarProps {

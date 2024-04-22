@@ -133,7 +133,7 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
         const [movedCard] = sourceList.cards.splice(source.index, 1);
         // console.log(sourceList.cards.splice(source.index, 1));
 
-        console.log(movedCard);
+        // console.log(movedCard);
         // Assign the new listed to the moved card
         movedCard.listId = destination.droppableId;
         // Add card to the destination list
